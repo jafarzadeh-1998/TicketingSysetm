@@ -1,0 +1,17 @@
+{% extends "ticket/base_generic.html" %}
+{% block content %}
+  
+
+  <h1>Chamran Team</h1>
+  <h3>{{ticket.title}}</h3>
+  <h4>Messages :</h4>
+  {% for mess in ticket.ticketmessage_set.all %}
+    {{mess.message}}
+  {% endfor%}
+
+  <form method="POST" action="{% url 'ticket:new_message' ticket.pk%}">
+      {% csrf_token %}
+      {{creatMassegForm}}
+      <input type='submit' value='Send'>
+  </form>
+  {% endblock content %}

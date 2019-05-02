@@ -1,0 +1,10 @@
+{% extends "ticket/base_generic.html" %}
+{% block content %}
+  <h1>Chamran Team</h1>
+  {% if user.is_authenticated %}
+    <h3><p>Hi {{user.get_username}}!</p></h3>
+    <a href="{% url 'ticket:ticket-list' %}">All My Tickets</a>
+  {% else %}
+    <p>Please <a href="{% url 'ticket:login' %}">login</a> to show your tickets.</p>
+  {% endif %}  
+{% endblock content %}

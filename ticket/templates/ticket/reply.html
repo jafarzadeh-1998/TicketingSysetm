@@ -1,0 +1,15 @@
+{% extends "ticket/base_generic.html" %}
+{% block content %}
+  <h1>All Message</h1>
+  {% if user.is_superuser %}
+    <h4>{{ ticketMessage.message }}</h4>
+    <form method="POST">
+      {% csrf_token %}
+      Reply : <input type="text" name="reply">
+      <input type="submit" value="Send" name="submit">
+    </form>
+  
+  {% else %}
+    <h5><p>You don't permission! this page is just for admin!</p></h5>  
+  {% endif %}
+  {% endblock content %}

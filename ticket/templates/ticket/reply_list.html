@@ -1,0 +1,19 @@
+{% extends "ticket/base_generic.html" %}
+{% block content %}
+  <h1>All Messages</h1>
+  {% if user.is_superuser %}
+    {% if message_list %}  
+      <h4>There are all messages that need reply.</h4>
+      <ul>
+      {% for message in message_list %}
+        <li><a href="{% url 'ticket:reply' message.pk %}"> {{ message.message }} </a></li>
+      {% endfor %}
+      </ul>
+    {% else %}
+    <h4>There isn't any message to reply.</h4>
+    {% endif %}
+  
+  {% else %}
+    <h5><p>You don't permission! this page is just for admin!</p></h5>  
+  {% endif %}
+  {% endblock content %}

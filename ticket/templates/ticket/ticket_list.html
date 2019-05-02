@@ -1,0 +1,17 @@
+{% extends "ticket/base_generic.html" %}
+{% block content %}
+  <h1>Ticekts</h1>
+  {% if ticket_list %}
+    <h4>There are all of your tickets.</h4>
+    <ul>
+    {% for tick in ticket_list %}
+      <li><a href="{{ tick.get_absolute_url }}"> {{ tick.title }} </a></li>
+    {% endfor %}
+    </ul>
+  
+  {% else %}
+    <h5><p>You don't have any ticket</p></h5>
+    <a href="{% url 'ticket:new_ticket' %}">Start now!</a>
+  
+  {% endif %}
+  {% endblock content %}

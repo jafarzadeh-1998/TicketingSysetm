@@ -1,0 +1,11 @@
+{% extends "ticket/base_generic.html" %}
+{% block content %}
+  <h1>Chamran Team</h1>
+
+  <form method="POST" >
+      {% csrf_token %}
+      Message : <input type="text" label="Title" name='message'>
+      <br><input type='submit' value='Send'>
+  </form>
+</div>
+{% endblock content %}

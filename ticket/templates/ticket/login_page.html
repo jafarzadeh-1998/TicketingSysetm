@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>login/signup form animation</title>
+  
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'ticket/login_style.css' %}" >
+
+  
+</head> 
+
+<body>
+
+    {% if user.is_authenticated %}
+      <p class="form-title"><font color='black' size=20>{{user.get_username}} ,you are logged in.<br>
+      click here <a href ="{% url 'ticket:home' %}">Home Page</a></font></p>
+    {% else %}
+    <div class="form-structor">
+      <div class="signup slide-up">
+        <h2 class="form-title" id="signup"><span>or</span> Sign up</h2>
+        <form method="post" action="{% url 'ticket:signup' %}">
+        <div class="form-holder">
+          {% csrf_token %}
+          Username : <br>
+          <input type="username" name='username'><br>
+          Password : <br>
+          <input type="password" name='password'>
+        </div>
+        <button  class="btn-submit">Sign up</button>
+      </form>
+      </div>
+      <div class="login ">
+        <div class="center">
+          <h2 class="form-title" id="login"><span>or</span> Log in</h2>
+          <form method="post" >
+          <div class="form-holder">
+            {% csrf_token %}
+            Username : <br>
+            <input type="username" name='username'><br>
+            Password : <br>
+            <input type="password" name='password'>
+          </div>
+          <button class="btn-submit">Log in</button>
+        </form>
+        </div>
+      </div>
+    {% endif %}
+</div>
+  
+  {% load static %}
+  <script  src="{% static 'ticket/login.js' %}"></script>
+</body>
+
+</html>

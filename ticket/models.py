@@ -1,12 +1,15 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
+
+from django.utils import timezone
 
 # Create your models here.
 
 
 class Ticket(models.Model):
-        title = models.CharField(max_length = 200)
-        user = models.CharField(max_length=200)
+        title = models.CharField(max_length=300)
+        user = models.ForeignKey(User ,on_delete=models.CASCADE)
         def __str__ (self):
                 return self.title
 
@@ -16,10 +19,12 @@ class Ticket(models.Model):
 
 
 class TicketMessage(models.Model):
-        message = models.CharField(max_length=200)
-        ticket=models.ForeignKey(Ticket,on_delete=models.CASCADE) 
+        message  = models.CharField(max_length=300)
+        ticket   = models.ForeignKey(Ticket,on_delete=models.CASCADE) 
+        reply    = models.CharField(max_length=300 ,default="")
+        
         def __str__ (self):
-                return self.message
+                return self.ticket.title + " : " + self.message
 
 
 
