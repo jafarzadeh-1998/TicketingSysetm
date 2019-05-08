@@ -123,6 +123,7 @@ class Reply(generic.TemplateView):
             TM.save()
         else:
             return HttpResponseRedirect(request.path)
+        return HttpResponseRedirect(reverse('ticket:reply-list'))
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
