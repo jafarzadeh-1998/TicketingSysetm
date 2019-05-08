@@ -4,7 +4,6 @@
 
   <h1>Chamran Team</h1>
   {% if user.username != ticket.user.username %}
-  <!-- {{user.username }}<br>{{ ticket.user.username}} -->
       <h4>You dont have permission to access to this page.</h4>
   {% else %}
   <h3>{{ticket.title}}</h3>
